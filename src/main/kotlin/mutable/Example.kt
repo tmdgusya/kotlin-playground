@@ -1,9 +1,11 @@
 package mutable
 
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.toImmutableList
 import java.util.Collections
 
 fun main() {
-    val list = mutableListOf(1, 2, 3)
+    val list = MutableList<Int>(3) { it + 1 }.toImmutableList()
     val firstEle = getFirstElement(list)
     val reversedEle = reverseList(list)
 
@@ -11,7 +13,7 @@ fun main() {
     println("First element: $firstEle")
 }
 
-fun reverseList(list: List<Int>): List<Int> {
+fun reverseList(list: ImmutableList<Int>): List<Int> {
     val copiedList = list.deepCopy()
     return copiedList.reversed()
 }
