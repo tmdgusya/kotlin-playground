@@ -4,7 +4,7 @@ import java.util.stream.Stream
 
 fun main() {
     val strings = listOf<String>("Any", "Is", "A", "String", " ", " ")
-    val result = averageNonBlankLength(strings.asSequence().constrainOnce())
+    val result = averageNonBlankLength(strings.iterator().asSequence())
     println(result)
 }
 
