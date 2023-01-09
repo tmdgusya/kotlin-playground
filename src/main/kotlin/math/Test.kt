@@ -4,20 +4,20 @@ package math
 
 //private fun triangular2(n: Int): Int = (1 .. n).fold(0) { acc, i -> acc + i }
 
-private fun quad(n: Int): Int = n * n
-
 fun main() {
-//    mutableListOf<Int>().also {
-//        for (i in 0 .. 10000) {
-//            it.add(triangular(i))
-//        }
-//    }.run {
-//        for (i in 0 .. 10000) {
-//            if (this.contains(quad(i))) println(quad(i))
-//        }
-//    }
-
-    println(triangular(100_000_000))
+    println("Hello World! ${A(3) + A(2) * A(2)}")
+    A(5)
+    A(3)
 }
 
-private tailrec fun triangular(n: Int, acc: Int = 0): Int = if (n == 0) acc else triangular(n - 1, acc + n)
+class A(private val v: Int) {
+
+    operator fun plus(b: A): A {
+        return A(v + b.v)
+    }
+
+    operator fun times(b: A): A {
+        return A(v * b.v)
+    }
+}
+
