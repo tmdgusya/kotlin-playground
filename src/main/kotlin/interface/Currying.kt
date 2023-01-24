@@ -14,6 +14,12 @@ fun applyAWithB(f: (a: Int, b:Int) -> Int): (Int) -> (Int) -> Int {
     return ::applyA
 }
 
+class EmailSender: (String) -> Unit {
+    override fun invoke(email: String) {
+        println(email)
+    }
+}
+
 fun <T : Any, R : Any> curriedLet(obj: T): ((T) -> R) -> R {
     fun executeBlockWithObj(block: (T) -> R): R {
         return block(obj)
@@ -23,8 +29,10 @@ fun <T : Any, R : Any> curriedLet(obj: T): ((T) -> R) -> R {
 }
 
 fun main() {
+    val sender = EmailSender()
+    sender.invoke(email = "roach@woowahan.com")
     val sum = { a: Int, b: Int -> a + b}
-    val mult = {a: Int, b: Int -> a / b}
+    val mult = {a: Int, b: Int -> a * b}
     applyAWithB(sum)(1)(2)
     applyAWithB(mult)(1)(2)
     val curriedFunc = applyAWithB(sum)
